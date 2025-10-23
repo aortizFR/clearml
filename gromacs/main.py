@@ -62,6 +62,7 @@ with tempfile.NamedTemporaryFile(mode="w+t", delete=True) as named_temp_file:
         task_name=args["new_task_name"],
         script=named_temp_file.name,
         binary="/bin/bash",
+        docker="nvidia/cuda:12.6.3-cudnn-runtime-ubuntu20.04",
         docker_args="-e CLEARML_AGENT_SLURM_SKIP_SRUN=1",
     )
 
