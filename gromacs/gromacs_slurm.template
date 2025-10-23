@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH --job-name=clearml_task_${CLEARML_TASK.id}                                 # Job name DO NOT CHANGE
-#SBATCH --nodes=1                                                                  # Gromacs single node
-#SBATCH --ntasks=1                                                                 # Must be 1 for thread-MPI Gromacs
-#SBATCH --cpus-per-task=${CLEARML_TASK.hyperparams.properties.num_tasks.value:1}   # N MPI threads x M OpenMP threads
-#SBATCH --gres=gpu:${CLEARML_TASK.hyperparams.properties.num_gpus.value:1}         # Number of GPUs to request
-#SBATCH --mem=${CLEARML_TASK.hyperparams.properties.memory_gb.value:256G}          # Job memory request
-#SBATCH --time=02:00:00                                                            # Time limit hrs:min:sec
+#SBATCH --job-name=clearml_task_${CLEARML_TASK.id}                                    # Job name DO NOT CHANGE
+#SBATCH --nodes=1                                                                     # Gromacs single node
+#SBATCH --ntasks=1                                                                    # Must be 1 for thread-MPI Gromacs
+#SBATCH --cpus-per-task=${CLEARML_TASK.hyperparams.properties.num_tasks.value:1}      # N MPI threads x M OpenMP threads
+##SBATCH --gres=gpu:${CLEARML_TASK.hyperparams.properties.num_gpus.value:1}           # Number of GPUs to request
+#SBATCH --mem=${CLEARML_TASK.hyperparams.properties.memory_gb.value:256}G             # Job memory request
+#SBATCH --time=02:00:00                                                               # Time limit hrs:min:sec
 #SBATCH --output=task-${CLEARML_TASK.id}-%j.log
 #SBATCH --partition=compute
 
