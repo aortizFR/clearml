@@ -1,0 +1,116 @@
+<style>
+  .grid {
+    height: 100%;
+    width: 100%;
+    padding: 0 24px;
+    display: grid;
+    grid-gap: 12px;
+    grid-template-areas:
+      "a"
+      "b"
+      "c"
+      "d"
+      "e";
+  }
+  .grid::after {
+    content: "";
+    height: 12px;
+  }
+  @media (min-width: 960px) {
+    /* screen above 960px */
+    .grid {
+      grid-template-areas:
+        "a a"
+        "b c"
+        "d d"
+        "e e";
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto repeat(3, 1fr); /* first "auto" for Title row */
+    }
+  }
+  .col-a {
+    grid-area: a;
+  }
+  .col-b {
+    grid-area: b;
+  }
+  .col-c {
+    grid-area: c;
+  }
+  .col-d {
+    grid-area: d;
+  }
+  .col-e {
+    grid-area: e;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 4px;
+    background-color: var(--color-surface-container-low);
+  }
+
+  .col h4 {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+
+  .col-a h4 {
+    text-align: center;
+  }
+
+  .col .plot {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .col .plot img {
+    max-width: 100%;
+  }
+</style>
+
+<div class="grid">
+  <div class="col col-a">
+    <h4>Title</h4>
+  </div>
+  <div class="col col-b">
+    <h4>Gauge</h4>
+    <div class="plot">
+      <img
+        src="/api/apps.get_asset?app=simple-app&version=001.000.000&uri=gauge.svg"
+      />
+    </div>
+  </div>
+  <div class="col col-c">
+    <h4>Graph</h4>
+    <div class="plot">
+      <img
+        src="/api/apps.get_asset?app=simple-app&version=001.000.000&uri=graph.svg"
+      />
+    </div>
+  </div>
+  <div class="col col-d">
+    <div class="plot">
+      <img
+        src="/api/apps.get_asset?app=simple-app&version=001.000.000&uri=graph_parallel_coordinates.svg"
+      />
+    </div>
+  </div>
+  <div class="col col-e">
+    <h4>Console Log</h4>
+    <div class="plot">
+      <img
+        src="/api/apps.get_asset?app=simple-app&version=001.000.000&uri=log.svg"
+      />
+    </div>
+  </div>
+</div>

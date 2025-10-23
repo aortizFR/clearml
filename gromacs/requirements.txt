@@ -1,0 +1,4 @@
+# Note: these requirements are installed in the applications instance image on top of the system libraries
+# To force a newer clearml version use == or >=
+clearml>=1.11.0
+pillow >= 10.3.0  # due to vulnerability from clearml 1.18.0
