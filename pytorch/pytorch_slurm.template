@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name=clearml_task_${CLEARML_TASK.id}                                    # Job name DO NOT CHANGE
+#SBATCH --nodes=${CLEARML_TASK.hyperparams.properties.num_nodes.value:1}              # Number of nodes
+#SBATCH --output=task-${CLEARML_TASK.id}-%j.log
+#SBATCH --partition=compute
+
+${CLEARML_PRE_SETUP}
+
+echo "Running as user: $(whoami)"
+echo "Task ID: ${CLEARML_TASK.id}"
+echo "Task Name: ${CLEARML_TASK.name}"
+
+${CLEARML_AGENT_EXECUTE}
+
+${CLEARML_POST_SETUP}
